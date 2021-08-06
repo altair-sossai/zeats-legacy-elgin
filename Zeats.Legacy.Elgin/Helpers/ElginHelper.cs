@@ -121,5 +121,18 @@ namespace Zeats.Legacy.Elgin.Helpers
 
             return success;
         }
+
+        public static bool PrintBarcodeB(IntPtr printer, string data, byte type = 73)
+        {
+            byte[] barcode = { 29, 107, type };
+
+            var success = RawPrinterHelper.WritePrinter(printer, barcode);
+            success = success && RawPrinterHelper.WritePrinter(printer, data);
+
+            byte[] nul = { 0 };
+            success = success && RawPrinterHelper.WritePrinter(printer, nul);
+
+            return success;
+        }
     }
 }

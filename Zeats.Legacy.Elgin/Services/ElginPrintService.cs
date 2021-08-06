@@ -85,7 +85,22 @@ namespace Zeats.Legacy.Elgin.Services
             ElginHelper.BarcodeWidth(printer, 6);
             ElginHelper.BarcodeHriChars(printer, 1);
             ElginHelper.BarcodeHriPostion(printer, 2);
-            ElginHelper.PrintBarcode(printer, printItem.Content);
+
+            switch (printItem.BarCodeType)
+            {
+                case BarCodeType.Ean13:
+                    ElginHelper.PrintBarcode(printer, printItem.Content);
+                    break;
+
+                case BarCodeType.Code128:
+                    ElginHelper.PrintBarcodeB(printer, printItem.Content);
+                    break;
+
+                default:
+                    ElginHelper.PrintBarcode(printer, printItem.Content);
+                    break;
+            }
+
             ElginHelper.LineFeed(printer, 1);
         }
     }
