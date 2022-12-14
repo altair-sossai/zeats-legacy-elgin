@@ -84,7 +84,7 @@ namespace Zeats.Legacy.Elgin.Services
 			ElginHelper.BarcodeHeight(printer, 80);
             ElginHelper.BarcodeWidth(printer);
             ElginHelper.BarcodeHriChars(printer, 1);
-            ElginHelper.BarcodeHriPostion(printer);
+            ElginHelper.BarcodeHriPostion(printer, 2);
 
             switch (printItem.BarCodeType)
             {
