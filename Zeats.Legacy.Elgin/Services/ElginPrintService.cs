@@ -81,10 +81,10 @@ namespace Zeats.Legacy.Elgin.Services
 
         private static void PrintBarCode(IntPtr printer, PrintItem printItem)
         {
-            ElginHelper.BarcodeHeight(printer, 80);
-            ElginHelper.BarcodeWidth(printer, 6);
+			ElginHelper.BarcodeHeight(printer, 80);
+            ElginHelper.BarcodeWidth(printer);
             ElginHelper.BarcodeHriChars(printer, 1);
-            ElginHelper.BarcodeHriPostion(printer, 2);
+            ElginHelper.BarcodeHriPostion(printer);
 
             switch (printItem.BarCodeType)
             {
@@ -93,7 +93,7 @@ namespace Zeats.Legacy.Elgin.Services
                     break;
 
                 case BarCodeType.Code128:
-                    ElginHelper.PrintBarcodeB(printer, printItem.Content);
+                    ElginHelper.PrintBarcode(printer, printItem.Content, 8);
                     break;
 
                 default:
